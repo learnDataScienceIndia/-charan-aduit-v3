@@ -106,6 +106,29 @@
     body { padding: 5px; }
     .invoice { width: 100%; min-height: auto; padding: 10px; overflow-x:auto; }
   }
+
+ .words-input {
+    width: 70%;
+    border: 0;
+    border-bottom: 1px dotted #777;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+    padding: 1px 2px;
+    outline: none;
+}
+
+.words-input:focus {
+    border-bottom: 1px solid #333;
+    background: #fffde8;
+}
+
+@media print {
+    .words-input {
+        border: 0 !important;
+        background: transparent !important;
+    }
+}
 </style>
 </head>
 <body>
@@ -234,8 +257,8 @@
     <tr>
       <td class="words" colspan="7">
         <strong>Amount Chargeable (in words)</strong>
-        USD Dollar ………………………………………………..<br>
-        Equivalent UAE Dirham Thirty Eight Thousand One Hundred Eighty Only
+       USD Dollar <input class="words-input" type="text" placeholder="Enter amount in words"><br>
+Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter amount in words">
       </td>
     </tr>
   </table>
