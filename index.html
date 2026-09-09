@@ -144,25 +144,28 @@
   }
   .table-wrap { margin-bottom: 6px; }
   @media print {
-
-    /* Hide action column completely */
-    .print-hide {
-        display: none !important;
+    /* Remove the Action column itself, including its cells.
+       Do NOT rely on hiding only the button; otherwise the blank cell
+       can remain part of the printed table structure. */
+    #itemsTable th.action-col,
+    #itemsTable td.action-col,
+    #summaryTable th.action-col,
+    #summaryTable td.action-col {
+      display: none !important;
     }
 
-    /* Remove button only */
+    /* Hide editing controls that are outside the tables. */
     .remove-row,
     .add-row {
-        display:none !important;
+      display: none !important;
     }
 
     input,
     textarea {
-        border:none !important;
-        background:transparent !important;
+      border: none !important;
+      background: transparent !important;
     }
-
-}
+  }
 
 
   @media print {
@@ -257,26 +260,7 @@
     width: 100%;
     margin-bottom: 10px;
 }
-
-media print {
-
-    /* Hide Action column completely */
-    th.action-column,
-    td.action-column {
-        display: none !important;
-    }
-
 }
-
- @media print {
-
-    table th:last-child,
-    table td:last-child {
-        display: none !important;
-    }
-
-}
-
 </style>
 </head>
 <body>
@@ -462,7 +446,7 @@ media print {
           <td><input class="total-usd input-number" type="number" min="0" step="0.01" value="0"></td>
           <td><input class="total-aed input-number" type="number" min="0" step="0.01" value="0"></td>
           <td><input class="vat-aed input-number" type="number" min="0" step="0.01" value="0"></td>
-          <td class="center"><button type="button" class="remove-row" onclick="removeItemRow(this)">Remove</button></td>
+          <td class="center action-col"><button type="button" class="remove-row" onclick="removeItemRow(this)">Remove</button></td>
         </tr>
         <tr class="item-row">
           <td class="center row-no">2</td>
@@ -481,7 +465,7 @@ media print {
           <td><input class="total-usd input-number" type="number" min="0" step="0.01" value="0"></td>
           <td><input class="total-aed input-number" type="number" min="0" step="0.01" value="0"></td>
           <td><input class="vat-aed input-number" type="number" min="0" step="0.01" value="0"></td>
-          <td class="center"><button type="button" class="remove-row" onclick="removeItemRow(this)">Remove</button></td>
+          <td class="center action-col"><button type="button" class="remove-row" onclick="removeItemRow(this)">Remove</button></td>
         </tr>
       </tbody>
       <tfoot>
@@ -532,7 +516,7 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
           <td><input class="conversion-rate input-number" type="number" min="0" step="0.0001" value="3.4977"></td>
           <td><input class="summary-aed input-number" type="number" min="0" step="0.01" value="38343.22"></td>
           <td><input class="summary-vat-aed input-number" type="number" min="0" step="0.01" value="1817.16"></td>
-          <td class="center"><button type="button" class="remove-row" onclick="removeSummaryRow(this)">Remove</button></td>
+          <td class="center action-col"><button type="button" class="remove-row" onclick="removeSummaryRow(this)">Remove</button></td>
         </tr>
         <tr class="summary-row">
           <td><input class="summary-name" value="Zero Rated Supply"></td>
@@ -541,7 +525,7 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
           <td><input class="conversion-rate input-number" type="number" min="0" step="0.0001" value="3.4977"></td>
           <td><input class="summary-aed input-number" type="number" min="0" step="0.01" value="0"></td>
           <td><input class="summary-vat-aed input-number" type="number" min="0" step="0.01" value="0"></td>
-          <td class="center"><button type="button" class="remove-row" onclick="removeSummaryRow(this)">Remove</button></td>
+          <td class="center action-col"><button type="button" class="remove-row" onclick="removeSummaryRow(this)">Remove</button></td>
         </tr>
         <tr class="summary-row">
           <td><input class="summary-name" value="Exempted Rated Supply"></td>
@@ -550,7 +534,7 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
           <td><input class="conversion-rate input-number" type="number" min="0" step="0.0001" value="3.4977"></td>
           <td><input class="summary-aed input-number" type="number" min="0" step="0.01" value="0"></td>
           <td><input class="summary-vat-aed input-number" type="number" min="0" step="0.01" value="0"></td>
-          <td class="center"><button type="button" class="remove-row" onclick="removeSummaryRow(this)">Remove</button></td>
+          <td class="center action-col"><button type="button" class="remove-row" onclick="removeSummaryRow(this)">Remove</button></td>
         </tr>
       </tbody>
       <tfoot>
