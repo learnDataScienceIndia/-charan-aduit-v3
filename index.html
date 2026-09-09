@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,11 +70,62 @@
     border-color: #777;
     background: #fff;
   }
+  textarea {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    font: inherit;
+    padding: 1px 2px;
+    color: inherit;
+    box-sizing: border-box;
+  }
+  textarea:focus {
+    outline: 1px solid #777;
+    border-color: #777;
+    background: #fff;
+  }
+  .grand-edit {
+    width: 100%;
+    text-align: right;
+    font-weight: 700;
+    border: 1px solid transparent;
+    background: transparent;
+  }
+  .grand-total .grand-edit:focus {
+    outline: 1px solid #777;
+    border-color: #777;
+    background: #fff;
+  }
+  .grand-total .center .grand-edit { text-align: center; }
   .items input[type="number"] { text-align: right; }
   .summary input[type="number"] { text-align: right; }
   .summary .summary-rate { text-align: center; }
   .summary .input-number { min-width: 65px; }
   .items .qty, .items .vat-rate { text-align: center; }
+  textarea {
+    width: 100%;
+    border: 1px solid transparent;
+    background: transparent;
+    font: inherit;
+    padding: 1px 2px;
+    color: inherit;
+    box-sizing: border-box;
+  }
+  textarea:focus {
+    outline: 1px solid #777;
+    border-color: #777;
+    background: #fff;
+  }
+  .items textarea.desc,
+  .summary textarea.summary-name {
+    display: block;
+    width: 100%;
+    min-height: 8mm;
+    resize: none;
+    overflow: hidden;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
   .action-col { width: 62px; }
   .remove-row, .add-row {
     border: 1px solid #555;
@@ -95,7 +145,8 @@
   .table-wrap { margin-bottom: 6px; }
   @media print {
     .action-col, .remove-row, .add-row { display: none !important; }
-    input { border: 0 !important; }
+    input, textarea { border: 0 !important; }
+    textarea { background: transparent !important; }
   }
 
   @media print {
@@ -129,6 +180,40 @@
         background: transparent !important;
     }
 }
+
+.payment-details {
+    width: 400px;
+    border:1px solid #ddd;
+    padding:20px;
+    font-family: Arial, sans-serif;
+}
+
+.payment-details h3 {
+    margin-bottom:15px;
+}
+
+.payment-details table {
+    width:100%;
+    border-collapse:collapse;
+}
+
+.payment-details td {
+    padding:8px;
+    border-bottom:1px solid #eee;
+}
+
+.signature-area {
+    margin-top:30px;
+    display:flex;
+    justify-content:flex-end;
+    gap:20px;
+}
+
+.signature-area img {
+    width:100px;
+}
+
+
 </style>
 </head>
 <body>
@@ -162,16 +247,15 @@
     style="width:100%; border:none; background:transparent; padding:3px 0; box-sizing:border-box;"
   >
 
-  <div style="display:flex; align-items:center; width:100%; padding:3px 0;">
-    <span style="white-space:nowrap; margin-right:5px;">Emirates ID:</span>
+   <div style="display:flex; align-items:center; width:100%;  padding:3px 0;">
+    <span style="white-space:nowrap; margin-right:5px;">TRN:</span>
     <input 
-      value="547"
-      placeholder="Enter Emirates ID"
+      value="105425075600003"
+      placeholder="Enter TRN"
       style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-size:inherit; font-family:inherit; padding:0;"
     >
   </div>
-
-  <div style="display:flex; align-items:center; width:100%;  padding:3px 0;">
+     <div style="display:flex; align-items:center; width:100%;  padding:3px 0;">
     <span style="white-space:nowrap; margin-right:5px;">Country:</span>
     <input 
       value="UAE"
@@ -180,23 +264,25 @@
     >
   </div>
 
-  <div style="display:flex; align-items:center; width:100%;  padding:3px 0;">
-    <span style="white-space:nowrap; margin-right:5px;">TRN:</span>
+     <div style="display:flex; align-items:center; width:100%;  padding:3px 0;">
+    <span style="white-space:nowrap; margin-right:5px;">Contact Person:</span>
     <input 
-      value="105425075600003"
-      placeholder="Enter TRN"
+      value="Enter Name"
+      placeholder="Contact Person"
       style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-size:inherit; font-family:inherit; padding:0;"
     >
   </div>
 
-  <input 
-    class="detail-input"
-    value="Contact Person, Phone number"
-    placeholder="Contact person, Phone number"
-    style="width:100%; border:none; background:transparent; padding:3px 0; box-sizing:border-box;"
-  >
-
-  <input 
+       <div style="display:flex; align-items:center; width:100%;  padding:3px 0;">
+    <span style="white-space:nowrap; margin-right:5px;">Phone number:</span>
+    <input 
+      value="Phone number"
+      placeholder="Number"
+      style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-size:inherit; font-family:inherit; padding:0;"
+    >
+  </div>
+     
+   <input 
     class="detail-input"
     value="UAE, Dubai"
     placeholder="Place of supply"
@@ -207,72 +293,72 @@
 
     <td>
       <span class="label">Invoice No.</span><br>
-      <input class="detail-input" value="RL/INV-010-A/2026">
+      <input class="detail-input" value="">
     </td>
 
     <td>
       <span class="label">Dated</span><br>
-      <input class="detail-input" value="2-Apr-26">
+      <input class="detail-input" value="">
     </td>
   </tr>
 
   <tr>
     <td class="yellow">
       <span class="label">Term of Delivery</span><br>
-      <input class="detail-input" placeholder="e.g. Same day">
+      <input class="detail-input" placeholder="">
     </td>
 
     <td>
       <span class="label">Payment Terms</span><br>
-      <input class="detail-input" placeholder="Enter payment terms">
+      <input class="detail-input" placeholder="">
     </td>
   </tr>
 
   <tr>
     <td>
       <span class="label">Due Date</span><br>
-      <input class="detail-input" placeholder="Enter due date">
+      <input class="detail-input" placeholder="">
     </td>
 
     <td>
       <span class="label">Other Reference(s)</span><br>
-      <input class="detail-input" placeholder="Enter reference">
+      <input class="detail-input" placeholder="">
     </td>
   </tr>
 
   <tr>
     <td>
       <span class="label">Buyer’s Order No.</span><br>
-      <input class="detail-input" placeholder="Enter order no.">
+      <input class="detail-input" placeholder="">
     </td>
 
     <td>
       <span class="label">Dated</span><br>
-      <input class="detail-input" placeholder="e.g. 23-Sept-2026">
+      <input class="detail-input" placeholder="">
     </td>
   </tr>
 
   <tr>
     <td>
       <span class="label">Delivery Note No.</span><br>
-      <input class="detail-input" placeholder="Enter delivery note no.">
+      <input class="detail-input" placeholder="">
     </td>
 
     <td>
       <span class="label">Delivery Note Date</span><br>
-      <input class="detail-input" placeholder="Enter delivery note date">
+      <input class="detail-input" placeholder="">
     </td>
   </tr>
 
   <tr>
     <td>
       <span class="label">Despatched through</span><br>
-      <input class="detail-input" placeholder="e.g. Truck / Courier">
+      <input class="detail-input" placeholder="">
     </td>
 
     <td>
       <span class="label">Destination</span><br>
-      <input class="detail-input" placeholder="e.g. Dubai, UAE">
+      <input class="detail-input" placeholder="">
     </td>
   </tr>
 </table>
@@ -298,7 +384,12 @@
       <tbody id="itemRows">
         <tr class="item-row">
           <td class="center row-no">1</td>
-          <td><input class="desc" value="PCB SCRAP"></td>
+          <td><textarea 
+    class="desc"
+    rows="1"
+    style="width:100%; min-height:8mm; resize:none; overflow:hidden; border:1px solid transparent; background:transparent; font:inherit; padding:1px 2px; box-sizing:border-box; white-space:pre-wrap; overflow-wrap:anywhere;"
+    oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px';"
+  >Product 2 Details</textarea></td>
           <td><input class="hs" value="—"></td>
           <td><input class="qty" type="number" min="0" step="any" value="318"></td>
           <td><input class="unit-price" type="number" min="0" step="0.01" value="114.29"></td>
@@ -312,7 +403,12 @@
         </tr>
         <tr class="item-row">
           <td class="center row-no">2</td>
-          <td><input class="desc" value="Product 2 Details"></td>
+         <td><textarea 
+    class="desc"
+    rows="1"
+    style="width:100%; min-height:8mm; resize:none; overflow:hidden; border:1px solid transparent; background:transparent; font:inherit; padding:1px 2px; box-sizing:border-box; white-space:pre-wrap; overflow-wrap:anywhere;"
+    oninput="this.style.height='auto'; this.style.height=this.scrollHeight+'px';"
+  >Product 2 Details</textarea></td></td>
           <td><input class="hs" value="—"></td>
           <td><input class="qty" type="number" min="0" step="any" value="90"></td>
           <td><input class="unit-price" type="number" min="0" step="0.01" value="0"></td>
@@ -330,14 +426,14 @@
           <td></td>
           <td><strong>Grand Total</strong></td>
           <td></td>
-          <td class="center" id="grandQty"><strong>0</strong></td>
+          <td class="center"><input id="grandQty" class="grand-edit" type="number" min="0" step="any" value="0"></td>
           <td></td>
-          <td class="right" id="grandTaxable"><strong>0.00</strong></td>
+          <td class="right"><input id="grandTaxable" class="grand-edit" type="number" min="0" step="0.01" value="0.00"></td>
           <td></td>
-          <td class="right" id="grandVatUsd"><strong>0.00</strong></td>
-          <td class="right" id="grandTotalUsd"><strong>0.00</strong></td>
-          <td class="right" id="grandTotalAed"><strong>0.00</strong></td>
-          <td class="right" id="grandVatAed"><strong>0.00</strong></td>
+          <td class="right"><input id="grandVatUsd" class="grand-edit" type="number" min="0" step="0.01" value="0.00"></td>
+          <td class="right"><input id="grandTotalUsd" class="grand-edit" type="number" min="0" step="0.01" value="0.00"></td>
+          <td class="right"><input id="grandTotalAed" class="grand-edit" type="number" min="0" step="0.01" value="0.00"></td>
+          <td class="right"><input id="grandVatAed" class="grand-edit" type="number" min="0" step="0.01" value="0.00"></td>
           <td></td>
         </tr>
       </tfoot>
@@ -415,6 +511,43 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
      
     </tr>
   </table>
+<div class="payment-details">
+
+    <h3>Payment Details</h3>
+
+    <table>
+        <tr>
+            <td>Account Name</td>
+            <td>ABC Company Pvt Ltd</td>
+        </tr>
+
+        <tr>
+            <td>Bank Name</td>
+            <td>XYZ Bank</td>
+        </tr>
+
+        <tr>
+            <td>Account Number</td>
+            <td>1234567890</td>
+        </tr>
+
+        <tr>
+            <td>IFSC Code</td>
+            <td>XYZB0001234</td>
+        </tr>
+
+    </table>
+
+
+    <div class="signature-area">
+
+        <img src="stamp.png" alt="Company Stamp">
+
+        <img src="signature.png" alt="Authorized Signature">
+
+    </div>
+
+</div>
 
 
   <div class="payment-signature-section">
@@ -480,6 +613,12 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
     return el ? (Number(el.value) || 0) : 0;
   }
 
+  function setGrandValue(id, number, integerOnly) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.value = integerOnly && Number.isInteger(number) ? String(number) : Number(number || 0).toFixed(2);
+  }
+
   function calculateInvoice(recalculateDerived) {
     let qty = 0, taxable = 0, vatUsd = 0, totalUsd = 0, totalAed = 0, vatAed = 0;
     const rate = conversionRate();
@@ -514,12 +653,12 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
       qty += q;
     });
 
-    document.getElementById("grandQty").textContent = Number.isInteger(qty) ? qty : qty.toFixed(2);
-    document.getElementById("grandTaxable").textContent = money(taxable);
-    document.getElementById("grandVatUsd").textContent = money(vatUsd);
-    document.getElementById("grandTotalUsd").textContent = money(totalUsd);
-    document.getElementById("grandTotalAed").textContent = money(totalAed);
-    document.getElementById("grandVatAed").textContent = money(vatAed);
+    setGrandValue("grandQty", qty, true);
+    setGrandValue("grandTaxable", taxable);
+    setGrandValue("grandVatUsd", vatUsd);
+    setGrandValue("grandTotalUsd", totalUsd);
+    setGrandValue("grandTotalAed", totalAed);
+    setGrandValue("grandVatAed", vatAed);
 
     calculateSummary();
   }
@@ -547,26 +686,56 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
     document.getElementById("summaryTotalVatAed").textContent = money(vatAed);
   }
 
+  function autoGrowTextarea(textarea) {
+    textarea.style.height = "auto";
+    textarea.style.height = Math.max(textarea.scrollHeight, 30) + "px";
+  }
+
   function bindInputs(root) {
-    root.querySelectorAll("input").forEach(function (input) {
-      input.addEventListener("input", function () {
-        const source = input.matches(".qty, .unit-price, .vat-rate");
-        calculateInvoice(source);
-      });
-      input.addEventListener("change", function () {
-        const source = input.matches(".qty, .unit-price, .vat-rate");
-        calculateInvoice(source);
-      });
+    root.querySelectorAll("input, textarea").forEach(function (field) {
+      if (field.dataset.bound === "1") return;
+      field.dataset.bound = "1";
+
+      if (field.matches("textarea")) {
+        autoGrowTextarea(field);
+        field.addEventListener("input", function () {
+          autoGrowTextarea(field);
+          calculateInvoice(false);
+        });
+        field.addEventListener("change", function () {
+          autoGrowTextarea(field);
+          calculateInvoice(false);
+        });
+      } else {
+        field.addEventListener("input", function () {
+          const source = field.matches(".qty, .unit-price, .vat-rate");
+          calculateInvoice(source);
+        });
+        field.addEventListener("change", function () {
+          const source = field.matches(".qty, .unit-price, .vat-rate");
+          calculateInvoice(source);
+        });
+      }
+    });
+  }
+
+  function renumberRows() {
+    document.querySelectorAll("#itemRows .item-row").forEach(function (row, index) {
+      const numberCell = row.querySelector(".row-no");
+      if (numberCell) numberCell.textContent = index + 1;
     });
   }
 
   window.addItemRow = function () {
     const tbody = document.getElementById("itemRows");
+    if (!tbody) return;
+
     const row = document.createElement("tr");
     row.className = "item-row";
     row.innerHTML =
       '<td class="center row-no"></td>' +
-      '<td><input class="desc" value="New Item"></td>' +
+      '<td><textarea class="desc auto-grow" rows="1" ' +
+        'style="width:100%; min-height:8mm; resize:none; overflow:hidden; border:1px solid transparent; background:transparent; font:inherit; padding:1px 2px; box-sizing:border-box; white-space:pre-wrap; overflow-wrap:anywhere;">New Item</textarea></td>' +
       '<td><input class="hs" value="—"></td>' +
       '<td><input class="qty" type="number" min="0" step="any" value="0"></td>' +
       '<td><input class="unit-price" type="number" min="0" step="0.01" value="0"></td>' +
@@ -577,51 +746,73 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
       '<td><input class="total-aed input-number" type="number" min="0" step="0.01" value="0"></td>' +
       '<td><input class="vat-aed input-number" type="number" min="0" step="0.01" value="0"></td>' +
       '<td class="center action-col"><button type="button" class="remove-row" onclick="removeItemRow(this)">Remove</button></td>';
+
     tbody.appendChild(row);
     bindInputs(row);
+    renumberRows();
     calculateInvoice(true);
   };
 
   window.removeItemRow = function (button) {
-    const rows = document.querySelectorAll("#itemRows .item-row");
+    if (!button) return;
+
+    const row = button.closest(".item-row");
+    const tbody = document.getElementById("itemRows");
+    if (!row || !tbody) return;
+
+    const rows = tbody.querySelectorAll(".item-row");
     if (rows.length <= 1) {
       alert("At least one item row is required.");
       return;
     }
-    button.closest(".item-row").remove();
+
+    row.remove();
+    renumberRows();
     calculateInvoice();
   };
 
   window.addSummaryRow = function () {
     const tbody = document.getElementById("summaryRows");
+    if (!tbody) return;
+
     const rate = conversionRate() || 3.4977;
     const row = document.createElement("tr");
     row.className = "summary-row";
     row.innerHTML =
-      '<td><input class="summary-name" value="New Summary"></td>' +
+      '<td><textarea class="summary-name auto-grow" rows="1" ' +
+        'style="width:100%; min-height:8mm; resize:none; overflow:hidden; border:1px solid transparent; background:transparent; font:inherit; padding:1px 2px; box-sizing:border-box; white-space:pre-wrap; overflow-wrap:anywhere;">New Summary</textarea></td>' +
       '<td><input class="summary-rate" type="number" min="0" step="0.01" value="5"></td>' +
       '<td><input class="summary-usd input-number" type="number" min="0" step="0.01" value="0"></td>' +
       '<td><input class="conversion-rate input-number" type="number" min="0" step="0.0001" value="' + rate.toFixed(4) + '"></td>' +
       '<td><input class="summary-aed input-number" type="number" min="0" step="0.01" value="0"></td>' +
       '<td><input class="summary-vat-aed input-number" type="number" min="0" step="0.01" value="0"></td>' +
       '<td class="center action-col"><button type="button" class="remove-row" onclick="removeSummaryRow(this)">Remove</button></td>';
+
     tbody.appendChild(row);
     bindInputs(row);
     calculateInvoice();
   };
 
   window.removeSummaryRow = function (button) {
-    const rows = document.querySelectorAll("#summaryRows .summary-row");
+    if (!button) return;
+
+    const row = button.closest(".summary-row");
+    const tbody = document.getElementById("summaryRows");
+    if (!row || !tbody) return;
+
+    const rows = tbody.querySelectorAll(".summary-row");
     if (rows.length <= 1) {
       alert("At least one summary row is required.");
       return;
     }
-    button.closest(".summary-row").remove();
+
+    row.remove();
     calculateInvoice();
   };
 
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("#itemRows .item-row, #summaryRows .summary-row").forEach(bindInputs);
+    renumberRows();
     calculateInvoice(true);
   });
 })();
