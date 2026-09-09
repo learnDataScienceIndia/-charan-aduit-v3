@@ -144,10 +144,26 @@
   }
   .table-wrap { margin-bottom: 6px; }
   @media print {
-    .action-col, .remove-row, .add-row { display: none !important; }
-    input, textarea { border: 0 !important; }
-    textarea { background: transparent !important; }
-  }
+
+    /* Hide action column completely */
+    .print-hide {
+        display: none !important;
+    }
+
+    /* Remove button only */
+    .remove-row,
+    .add-row {
+        display:none !important;
+    }
+
+    input,
+    textarea {
+        border:none !important;
+        background:transparent !important;
+    }
+
+}
+
 
   @media print {
     body { background:#fff; padding:0; }
@@ -407,7 +423,7 @@
           <th>Total including<br>VAT (USD)</th>
           <th>Total including<br>VAT (AED)</th>
           <th>VAT<br>(AED)</th>
-          <th class="action-col">Action</th>
+          <th class="action-col print-hide">Action</th>
         </tr>
       </thead>
       <tbody id="itemRows">
@@ -486,7 +502,7 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
         <tr>
           <th>SUMMARY</th><th>VAT Rate</th><th>Amount in USD</th>
           <th>Conversion Rate</th><th>Amount in AED</th><th>VAT in AED</th>
-          <th class="action-col">Action</th>
+          <th class="action-col print-hide">Action</th>
         </tr>
       </thead>
       <tbody id="summaryRows">
