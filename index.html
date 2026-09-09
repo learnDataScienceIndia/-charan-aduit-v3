@@ -143,6 +143,55 @@
     background: #fff900;
   }
   .table-wrap { margin-bottom: 6px; }
+
+ .print-footer {
+    display: none;
+}
+
+@media print {
+    @page {
+        size: A4;
+        margin: 12mm 10mm 18mm 10mm;
+    }
+
+    body {
+        background: #fff;
+        padding: 0;
+        margin: 0;
+    }
+
+    .invoice {
+        border: 0;
+        margin: 0;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .print-footer {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+        height: 10mm;
+
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 3mm 5mm;
+
+        background: #fff900;
+        border-top: 1px solid #222;
+
+        font-size: 8px;
+        font-weight: 600;
+
+        z-index: 9999;
+    }
+}
+  
   @media print {
     /* Remove the Action column itself, including its cells.
        Do NOT rely on hiding only the button; otherwise the blank cell
@@ -264,6 +313,14 @@
 </style>
 </head>
 <body>
+
+ <div class="print-footer">
+  <span>📞 +971 543252882</span>
+  <span>🌐 www.reloopglobal.com</span>
+  <span>✉ info@reloopglobal.com</span>
+</div>
+
+ 
 <div class="invoice">
 
   <table class="header">
@@ -314,7 +371,7 @@
      <div style="display:flex; align-items:center; width:100%;  padding:3px 0;">
     <span style="white-space:nowrap; margin-right:5px;">Contact Person:</span>
     <input 
-      value="Enter Name"
+      value=""
       placeholder=""
       style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-size:inherit; font-family:inherit; padding:0;"
     >
@@ -324,7 +381,7 @@
     <span style="white-space:nowrap; margin-right:5px;">Phone number:</span>
     <input 
       value=""
-      placeholder="Number"
+      placeholder=""
       style="flex:1; min-width:0; border:none; outline:none; background:transparent; font-size:inherit; font-family:inherit; padding:0;"
     >
   </div>
@@ -896,5 +953,7 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="">
 })();
 </script>
 
+ 
+ 
 </body>
 </html>
