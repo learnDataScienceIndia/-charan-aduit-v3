@@ -213,6 +213,36 @@
     width:100px;
 }
 
+ .payment-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: 40px;
+}
+
+
+.payment-details {
+    width: 60%;
+}
+
+
+.signature-area {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+
+.signature-area img {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
 
 </style>
 </head>
@@ -511,34 +541,37 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
      
     </tr>
   </table>
-<div class="payment-details">
+<div class="payment-wrapper">
 
-    <h3>Payment Details</h3>
+    <!-- Left Side: Payment Details -->
+    <div class="payment-details">
+        <h3>Payment Details</h3>
 
-    <table>
-        <tr>
-            <td>Account Name</td>
-            <td>ABC Company Pvt Ltd</td>
-        </tr>
+        <table>
+            <tr>
+                <td>Account Name</td>
+                <td>ABC Company Pvt Ltd</td>
+            </tr>
 
-        <tr>
-            <td>Bank Name</td>
-            <td>XYZ Bank</td>
-        </tr>
+            <tr>
+                <td>Bank Name</td>
+                <td>XYZ Bank</td>
+            </tr>
 
-        <tr>
-            <td>Account Number</td>
-            <td>1234567890</td>
-        </tr>
+            <tr>
+                <td>Account Number</td>
+                <td>1234567890</td>
+            </tr>
 
-        <tr>
-            <td>IFSC Code</td>
-            <td>XYZB0001234</td>
-        </tr>
+            <tr>
+                <td>IFSC Code</td>
+                <td>XYZB0001234</td>
+            </tr>
+        </table>
+    </div>
 
-    </table>
 
-
+    <!-- Right Side: Signature -->
     <div class="signature-area">
 
         <img src="stamp.png" alt="Company Stamp">
@@ -548,6 +581,7 @@ Equivalent UAE Dirham <input class="words-input" type="text" placeholder="Enter 
     </div>
 
 </div>
+
 
 
   <div class="payment-signature-section">
